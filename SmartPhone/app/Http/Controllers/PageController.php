@@ -17,4 +17,6 @@ class PageController extends Controller
       
         return view('page.trangchu', compact('slide', 'new_product', 'sanpham_khuyenmai'));
     }
+
+  
 }
