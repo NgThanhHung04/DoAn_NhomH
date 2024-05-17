@@ -17,6 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('index', 'App\Http\Controllers\PageController@getIndex')->name('trang-chu');
 
 
+Route::get('chi-tiet-san-pham', 'App\Http\Controllers\PageController@getChitiet')->name('chitietsanpham');
+
+
 Route::get('/', function () {
     return view('welcome');
 });
