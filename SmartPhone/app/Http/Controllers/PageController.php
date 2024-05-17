@@ -11,6 +11,7 @@ class PageController extends Controller
     public function getIndex()
     {
         $slide = Slide::all();
+        //$new_product = Product::where('id_type', 1);
         $new_product = Product::where('id_type', 1)->paginate(8);
         $sanpham_khuyenmai = Product::where('promotion_price', '<>', 0)->paginate(8);
    
