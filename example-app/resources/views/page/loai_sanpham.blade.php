@@ -35,7 +35,7 @@
 							</div>
 
 							<div class="row">
-								@foreach($sp_theoloai as $sp)
+							@foreach($sp_theoloai as $sp)
 								<div class="col-sm-4">
 									<div class="single-item">
 										<div class="single-item-header">
@@ -62,7 +62,7 @@
 						<div class="space50">&nbsp;</div>
 
 						<div class="beta-products-list">
-							<h4>Sản phẩm khác</h4>
+						<h4>Sản phẩm khác</h4>
 							<div class="beta-products-details">
 								<p class="pull-left">Tìm thấy {{count($sp_khac)}} sản phẩm</p>
 								<div class="clearfix"></div>

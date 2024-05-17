@@ -43,6 +43,7 @@ Route::post('dang-ki','App\Http\Controllers\PageController@postRegister')->name(
 Route::get('profile','App\Http\Controllers\PageController@getProfile')->name('profile');
 
 //dat hang
+
 Route::get('dat-hang','App\Http\Controllers\PageController@getCheckout')->name('dathang'); 
 Route::post('dat-hang','App\Http\Controllers\PageController@postCheckout')->name('dathang'); 
 
