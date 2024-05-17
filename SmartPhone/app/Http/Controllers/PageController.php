@@ -17,12 +17,10 @@ class PageController extends Controller
         return view('page.trangchu', compact('slide', 'new_product', 'sanpham_khuyenmai'));
     }
 
-<<<<<<< HEAD
     public function getLoaiSp(){
         return view('page.loai_sanpham');
     }
-=======
->>>>>>> trangchu
+
     public function getChitiet(Request $req){
         $sanpham = Product::where('id', $req->id)->first();
         if ($sanpham === null) {
