@@ -31,7 +31,7 @@
                                 <span class="cart-item-amount">{{$product['qty']}}*<span>@if($product['item']['promotion_price']==0)
                                     {{number_format($product['item']['unit_price'])}}@else  {{number_format($product['item']['promotion_price'])}}@endif </span></span>
                             </div>
-                        </div>
+                        </div> 
                     </div>
                     @endforeach 
                 
