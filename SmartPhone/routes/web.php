@@ -16,6 +16,11 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('index', 'App\Http\Controllers\PageController@getIndex')->name('trang-chu');
 
+Route::get('chi-tiet-san-pham', 'App\Http\Controllers\PageController@getChitiet')->name('chitietsanpham');
+
+Route::get('lien-he', 'App\Http\Controllers\PageController@getLienhe')->name('lienhe');
+Route::get('gioi-thieu', 'App\Http\Controllers\PageController@getGioiThieu')->name('gioithieu');
+
 
 Route::get('/', function () {
     return view('welcome');
