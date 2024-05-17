@@ -75,9 +75,7 @@
                             @endforeach
                         </div>
                         <!--Phân trang -->
-                        <!--<div class="row">{{$new_product->links()}}</div>-->
-
- 			<div class="row">{{$new_product->links()}}</div>
+                        <div class="row">{{$new_product->links()}}</div>
 
                     </div>
 
