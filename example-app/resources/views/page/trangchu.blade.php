@@ -5,7 +5,7 @@
         <div class="bannercontainer">
             <div class="banner">
                 <ul>
-                @foreach($slide as $sl)
+                    @foreach($slide as $sl)
                     <!-- THE FIRST SLIDE -->
                     <li data-transition="boxfade" data-slotamount="20" class="active-revslide" style="width: 100%; height: 100%; overflow: hidden; z-index: 18; visibility: hidden; opacity: 0;">
                         <div class="slotholder" style="width:100%;height:100%;" data-duration="undefined" data-zoomstart="undefined" data-zoomend="undefined" data-rotationstart="undefined" data-rotationend="undefined" data-ease="undefined" data-bgpositionend="undefined" data-bgposition="undefined" data-kenburns="undefined" data-easeme="undefined" data-bgfit="undefined" data-bgfitend="undefined" data-owidth="undefined" data-oheight="undefined">
@@ -70,14 +70,12 @@
                                         <a class="beta-btn primary" href="{{route('chitietsanpham', $new -> id)}}">Chi tiết <i class="fa fa-chevron-right"></i></a>
                                         <div class="clearfix"></div>
                                     </div>
-                                    <br><br><br>
                                 </div>
                             </div>
                             @endforeach
                         </div>
                         <!--Phân trang -->
                         <div class="row">{{$new_product->links()}}</div>
-                        
 
                     </div> <!-- .beta-products-list -->
 
@@ -108,17 +106,16 @@
                                         <a class="beta-btn primary" href="{{route('chitietsanpham', $spkm -> id)}}">Chi tiết <i class="fa fa-chevron-right"></i></a>
                                         <div class="clearfix"></div>
                                     </div>
-                                    <br><br><br>
                                 </div>
                             </div>
                             @endforeach
                         </div>
-                        <!-- <div class="row">{{$sanpham_khuyenmai->links()}}</div> -->
+                        <div class="row">{{$sanpham_khuyenmai->links()}}</div>
                         <div class="space40">&nbsp;</div>
-                    </div> <!-- .beta-products-list -->
+                    </div>
                 </div>
-            </div> <!-- end section with sidebar and main content -->
-        </div> <!-- .main-content -->
-    </div> <!-- #content -->
-</div> <!-- .container -->
+            </div>
+        </div>
+    </div> 
+</div> 
 @endsection

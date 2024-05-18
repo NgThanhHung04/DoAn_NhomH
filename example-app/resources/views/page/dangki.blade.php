@@ -1,7 +1,22 @@
 @extends('master')
 @section('content')
+<div class="inner-header">
+		<div class="container">
+			<div class="pull-left">
+				<h6 class="inner-title">Đăng kí</h6>
+			</div>
+			<div class="pull-right">
+				<div class="beta-breadcrumb">
+					<a href="index.html">{{route('trang-chu')}}">Trang chủ</a> / <span>Đăng kí</span>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+	
 	<div class="container">
 		<div id="content">
+			
 			<form action="{{route('dangki')}}" method="post" class="beta-form-checkout">
                 <input type="hidden" name="_token" value="{{csrf_token()}}">
 				<div class="row">
@@ -19,32 +34,34 @@
 					<div class="col-sm-6">
 						<h4>Đăng kí</h4>
 						<div class="space20">&nbsp;</div>
+
 						
 						<div class="form-block">
-							<label for="email">Email</label>
+							<label for="email">Email address*</label>
 							<input type="email" name="email" required>
 						</div>
 
 						<div class="form-block">
-							<label for="your_last_name">Fullname</label>
+							<label for="your_last_name">Fullname*</label>
 							<input type="text" name="fullname" required>
 						</div>
 
 						<div class="form-block">
-							<label for="adress">Address</label>
-							<input type="text" name="address" required>
+							<label for="adress">Address*</label>
+							<input type="text" name="adress" value="Street Address" required>
 						</div>
 
+
 						<div class="form-block">
-							<label for="phone">Phone</label>
+							<label for="phone">Phone*</label>
 							<input type="text" name="phone" required>
 						</div>
 						<div class="form-block">
-							<label for="phone">Password</label>
+							<label for="phone">Password*</label>
 							<input type="password" name="password" required>
 						</div>
 						<div class="form-block">
-							<label for="phone">Re password</label>
+							<label for="phone">Re password*</label>
 							<input type="password" name="re_password" required>
 						</div>
 						<div class="form-block">

@@ -35,7 +35,7 @@
 							</div>
 
 							<div class="row">
-							@foreach($sp_theoloai as $sp)
+								@foreach($sp_theoloai as $sp)
 								<div class="col-sm-4">
 									<div class="single-item">
 										<div class="single-item-header">
@@ -51,18 +51,17 @@
 											<a class="add-to-cart pull-left" href="shopping_cart.html"><i class="fa fa-shopping-cart"></i></a>
 											<a class="beta-btn primary" href="product.html">Details <i class="fa fa-chevron-right"></i></a>
 											<div class="clearfix"></div>
-											<br><br><br>
 										</div>
 									</div>
 								</div>
 								@endforeach
 							</div>
-						</div> <!-- .beta-products-list -->
+						</div> 
 
 						<div class="space50">&nbsp;</div>
 
 						<div class="beta-products-list">
-						<h4>Sản phẩm khác</h4>
+							<h4>Sản phẩm khác</h4>
 							<div class="beta-products-details">
 								<p class="pull-left">Tìm thấy {{count($sp_khac)}} sản phẩm</p>
 								<div class="clearfix"></div>
@@ -84,7 +83,6 @@
 											<a class="add-to-cart pull-left" href="shopping_cart.html"><i class="fa fa-shopping-cart"></i></a>
 											<a class="beta-btn primary" href="product.html">Details <i class="fa fa-chevron-right"></i></a>
 											<div class="clearfix"></div>
-											<br><br><br>
 										</div>
 									</div>
 								</div>
@@ -93,12 +91,12 @@
 							<div class="row">{{$sp_khac->links()}}</div>
 							<div class="space40">&nbsp;</div>
 							
-						</div> <!-- .beta-products-list -->
+						</div> 
 					</div>
-				</div> <!-- end section with sidebar and main content -->
+				</div>
 
 
-			</div> <!-- .main-content -->
-		</div> <!-- #content -->
-	</div> <!-- .container -->
+			</div> 
+		</div> 
+	</div> 
     @endsection

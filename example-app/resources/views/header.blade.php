@@ -6,12 +6,14 @@
     </div>
     <div class="pull-right beta-components space-left ov">
         <div class="space30">&nbsp;</div>
-        <!-- <div class="beta-comp">
+        <div class="beta-comp">
             <form role="search" method="get" id="searchform" action="{{route('search')}}">
                 <input type="text" value="" name="key" id="s" placeholder="Nhập từ khóa..." />
                 <button class="fa fa-search" type="submit" id="searchsubmit"></button>
             </form>
-        </div> -->
+        </div>
+        
+        
         <div class="beta-comp">
         @if(Session::has('cart'))
           
@@ -54,45 +56,34 @@
 
         <div class="pull-right auto-width-right">
             <ul class="top-details menu-beta l-inline">
-                @if(Auth::check())
-                <li><a href="#" class="fa fa-user">{{Auth::user()->full_name}}</a></li>
-                <li><a href="{{route('dangxuat')}}">Đăng Xuất</a></li>
-                @else
+                <li><a href="#"><i class="fa fa-user"></i>Tài khoản</a></li>
                 <li><a href="{{route('dangki')}}">Đăng kí</a></li>
                 <li><a href="{{route('dangnhap')}}">Đăng nhập</a></li>
-                @endif
             </ul>
         </div>
         <div class="clearfix"></div>
     </div>
 </div> <!-- .container -->
 </div> <!-- .header-body -->
-<div class="header-bottom" style="background-color: #0277b8;">
-    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
-        <nav class="main-menu" style="flex-grow: 2;">
-            <ul class="l-inline ov" style="display: flex; margin: 20px; align-items: center;">
-                <li><a href="{{route('trang-chu')}}">Trang chủ</a></li>
-                <li><a href="#">Loại sản phẩm</a>
-                    <ul class="sub-menu">
-                        @foreach($loai_sp as $loai)
-                            <li><a href="{{route('loaisanpham',$loai->id)}}">{{$loai->name}}</a></li>
-                        @endforeach
-                    </ul>
-                </li>
-                <li><a href="{{route('gioithieu')}}">Giới thiệu</a></li>
-                <li><a href="{{route('lienhe')}}">Liên hệ</a></li>
-            </ul>
-            <div class="clearfix"></div>
-        </nav>
-        <div class="beta-comp">
-            <form role="search" method="get" id="searchform" action="{{route('search')}}" style="display: flex; align-items: center;">
-                <input type="text" value="" name="key" id="s" placeholder="Nhập từ khóa..." style="padding: 5px; border-radius: 5px 0 0 5px; border: 1px solid #ccc; border-right: none; margin-right: -4px;" />
-                <button class="fa fa-search" type="submit" id="searchsubmit" style="background-color: #f44336; color: #fff; border: none; padding: 10px 15px; border-radius: 0 5px 5px 0; margin-left: -4px;"></button>
-            </form>
-        </div>
-    </div> <!-- .container -->
-</div>
-
-
- <!-- .header-bottom -->
+		<div class="header-bottom" style="background-color: #0277b8;">
+			<div class="container">
+				<a class="visible-xs beta-menu-toggle pull-right" href=""><span class='beta-menu-toggle-text'>Menu</span> <i class="fa fa-bars"></i></a>
+				<div class="visible-xs clearfix"></div>
+				<nav class="main-menu">
+					<ul class="l-inline ov">
+						<li><a href="{{route('trang-chu')}}">Trang chủ</a></li>
+						<li><a href="#">Loại sản phẩm</a>
+							<ul class="sub-menu">
+                                @foreach($loai_sp as $loai)
+								<li><a href="{{route('loaisanpham',$loai->id)}}">{{$loai->name}}</a></li>
+								@endforeach
+							</ul>
+						</li>
+						<li><a href="{{route('gioithieu')}}">Giới thiệu</a></li>
+						<li><a href="{{route('lienhe')}}">Liên hệ</a></li>
+					</ul>
+					<div class="clearfix"></div>
+				</nav>
+			</div> <!-- .container -->
+		</div> <!-- .header-bottom -->
 	</div> <!-- #header -->

@@ -1,8 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Support\Facades\Auth;
-use Hash;
+
 use App\Models\Slide;
 use App\Models\Product;
 use App\Models\Cart;
@@ -11,7 +10,9 @@ use App\Models\Customer;
 use App\Models\Bill;
 use App\Models\BillDetail;
 use App\Models\ProductType;
-use Session;
+ use App\Http\Controllers\Auth;
+use Hash;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Validator;
@@ -21,23 +22,23 @@ class PageController extends Controller
     
     public function getIndex()
     {
-        $slide = Slide::all();
-        $new_product = Product::where('id_type', 1)->paginate(8);
-        $sanpham_khuyenmai = Product::where('promotion_price', '<>', 0)->paginate(8);
-   
-      
-        return view('page.trangchu', compact('slide', 'new_product', 'sanpham_khuyenmai'));
+         $slide = Slide::all();
+         $new_product = Product::where('new', 1)->paginate(3);
+         $sanpham_khuyenmai = Product::where('promotion_price', '<>', 0)->paginate(3);
+    
        
+         return view('page.trangchu', compact('slide', 'new_product', 'sanpham_khuyenmai'));
+        
     }
     
+
     public function getLoaiSp($type)
     {
         //$sp_theoloai = Product::all();
         $sp_theoloai = Product::where('id_type', $type )->get();
         $sp_khac = Product::where('id_type', '<>', $type)->paginate(3);
         $loai = ProductType::all();
-        $loai_sp = ProductType::where('id', $type)->first();  
-        
+        $loai_sp = ProductType::where('id', $type)->first();
         return view('page.loai_sanpham', compact('sp_theoloai', 'sp_khac', 'loai', 'loai_sp'));
     }
     
@@ -57,9 +58,32 @@ class PageController extends Controller
     public function getGioiThieu(){
         return view('page.gioithieu');
     }
-    public function getProfile(){
-        return view('page.profile');
-    }
+
+    //them gio hang
+    public function getAddToCart(Request $req, $id){
+        $product = Product::find($id);
+        $oldCart = Session('cart')?Session::get('cart'):null;
+        $cart = new Cart($oldCart);
+        $cart->add($product, $id);
+        $req->session()->put('cart', $cart);
+        return redirect()->back();
+        }
+
+        // //xoa
+        public function getDelItemCart($id){
+            $oldCart = Session('cart')?Session::get('cart'):null;
+            $cart = new Cart($oldCart);
+            $cart->removeItem($id);
+            if(count($cart->items)>0){
+                Session::put('cart', $cart);
+            }
+          else{
+            Session::forget('cart');
+          }
+            
+            return redirect()->back();
+        }
+
 
     public function getLogin(){
         return view('page.dangnhap');
@@ -68,15 +92,11 @@ class PageController extends Controller
     public function getRegister(){
         return view('page.dangki');
     }
-    
-    //Đăng ký
     public function postRegister(Request $req){
         $this->validate($req, [
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:6|max:20',
             'fullname' => 'required',
-            'phone' => 'required|max:10',
-            'address' => 'required|max:150',
             're_password' => 'required|same:password'
         ], [
             'email.required' => 'Vui lòng nhập email',
@@ -84,9 +104,7 @@ class PageController extends Controller
             'email.unique' => 'Email đã có người sử dụng',
             'password.required' => 'Vui lòng nhập password',
             're_password.same' => 'Mật khẩu không giống nhau',
-            'password.min' => 'Mật khẩu ít nhất có 6 kí tự',
-            'phone.required' => 'Vui lòng nhập phone',
-            'address.required' => 'Vui lòng nhập address',
+            'password.min' => 'Mật khẩu ít nhất có 6 kí tự'
         ]);
     
         $user = new User();
@@ -97,10 +115,9 @@ class PageController extends Controller
         $user->address = $req->address;
         $user->save();
     
-        return redirect()->back()->with('thanhcong', 'Tạo tài khoản thành công!!!');
+        return redirect()->back()->with('thanhcong', 'Tạo tài khoản thành công!!');
     }
-
-    //Đăng nhập
+   
     public function indexLogin()
     {
         return view('page.dangnhap');
@@ -113,11 +130,11 @@ class PageController extends Controller
             'password' => 'required',
         ]);
    
-        $credentials = $request->only('email', 'password');
-        if (Auth::attempt($credentials)) {
-            return redirect()->intended('trangchu')
-                        ->withSuccess('Signed in');
-        }
+        //$credentials = $request->only('email', 'password');
+        // if (Auth::attempt($credentials)) {
+        //     return redirect()->intended('trangchu')
+        //                 ->withSuccess('Signed in');
+        // }
         return redirect("index")->withSuccess('Login details are not valid');
     }
 
@@ -128,7 +145,7 @@ class PageController extends Controller
         return Redirect('dangnhap');
     }
 
-    //Tìm kiếm
+    //Tim kiem
     public function getSearch(Request $req){
         $product = Product::where('name','like','%'.$req->key.'%')
                             ->orWhere('unit_price',$req->key)
@@ -173,7 +190,6 @@ class PageController extends Controller
         $bill->note = $req->notes;
         $bill-> save();
 
-        
         foreach($cart->items as $key->$value){
             $bill_detail = new BillDeatil;
             $bill_detail ->id_bill = $bill->id;
@@ -182,6 +198,7 @@ class PageController extends Controller
             $bill_detail->unit_price = $value['price']/$value['qty'];
 
             $bill_detail->save();
+
 
         }
 

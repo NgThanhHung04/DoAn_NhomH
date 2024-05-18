@@ -29,25 +29,21 @@ Route::get('add-to-cart/{id}', 'App\Http\Controllers\PageController@getAddToCart
 Route::get('del-cart/{id}','App\Http\Controllers\PageController@getDelItemCart')->name('xoagiohang');
 
 // Route::get('dang-nhap','App\Http\Controllers\PageController@getLogin')->name('dangnhap'); 
-// Route::post('dang-nhap','App\Http\Controllers\PageController@postLogin')->name('dangnhap');
+// Route::post('dang-nhap','App\Http\Controllers\PageController@postLogin')->name('dangki');
+
+Route::get('dang-ki','App\Http\Controllers\PageController@getRegister')->name('dangki'); 
+Route::post('dang-ki','App\Http\Controllers\PageController@postRegister')->name('dangki');
 
 Route::get('dang-nhap', [PageController::class, 'indexLogin'])->name('dangnhap');
 Route::post('dang-nhap', [PageController::class, 'customLogin'])->name('dangnhap');
 
 Route::get('dang-xuat', [PageController::class, 'signOut'])->name('dangxuat');
 
-
-Route::get('dang-ki','App\Http\Controllers\PageController@getRegister')->name('dangki'); 
-Route::post('dang-ki','App\Http\Controllers\PageController@postRegister')->name('dangki');
-
-Route::get('profile','App\Http\Controllers\PageController@getProfile')->name('profile');
-
 //dat hang
-
 Route::get('dat-hang','App\Http\Controllers\PageController@getCheckout')->name('dathang'); 
 Route::post('dat-hang','App\Http\Controllers\PageController@postCheckout')->name('dathang'); 
 
-
+//tim kiếm
 Route::get('search','App\Http\Controllers\PageController@getSearch')->name('search'); 
 
 
